@@ -1,0 +1,16 @@
+d:\draev\documents\visual studio 2015\Projects\CollisionDetection\CollisionDetection\bin\Debug\CollisionDetection.exe.config
+d:\draev\documents\visual studio 2015\Projects\CollisionDetection\CollisionDetection\bin\Debug\CollisionDetection.exe
+d:\draev\documents\visual studio 2015\Projects\CollisionDetection\CollisionDetection\bin\Debug\CollisionDetection.pdb
+d:\draev\documents\visual studio 2015\Projects\CollisionDetection\CollisionDetection\bin\Debug\GameLogic.dll
+d:\draev\documents\visual studio 2015\Projects\CollisionDetection\CollisionDetection\bin\Debug\GameLogic.pdb
+d:\draev\documents\visual studio 2015\Projects\CollisionDetection\CollisionDetection\obj\Debug\CollisionDetection.csprojResolveAssemblyReference.cache
+d:\draev\documents\visual studio 2015\Projects\CollisionDetection\CollisionDetection\obj\Debug\MainWindow.g.cs
+d:\draev\documents\visual studio 2015\Projects\CollisionDetection\CollisionDetection\obj\Debug\App.g.cs
+d:\draev\documents\visual studio 2015\Projects\CollisionDetection\CollisionDetection\obj\Debug\CollisionDetection_MarkupCompile.cache
+d:\draev\documents\visual studio 2015\Projects\CollisionDetection\CollisionDetection\obj\Debug\CollisionDetection_MarkupCompile.lref
+d:\draev\documents\visual studio 2015\Projects\CollisionDetection\CollisionDetection\obj\Debug\MainWindow.baml
+d:\draev\documents\visual studio 2015\Projects\CollisionDetection\CollisionDetection\obj\Debug\CollisionDetection.g.resources
+d:\draev\documents\visual studio 2015\Projects\CollisionDetection\CollisionDetection\obj\Debug\CollisionDetection.Properties.Resources.resources
+d:\draev\documents\visual studio 2015\Projects\CollisionDetection\CollisionDetection\obj\Debug\CollisionDetection.csproj.GenerateResource.Cache
+d:\draev\documents\visual studio 2015\Projects\CollisionDetection\CollisionDetection\obj\Debug\CollisionDetection.exe
+d:\draev\documents\visual studio 2015\Projects\CollisionDetection\CollisionDetection\obj\Debug\CollisionDetection.pdb

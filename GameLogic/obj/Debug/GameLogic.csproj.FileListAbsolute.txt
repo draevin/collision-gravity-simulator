@@ -1,0 +1,5 @@
+d:\draev\documents\visual studio 2015\Projects\CollisionDetection\GameLogic\bin\Debug\GameLogic.dll
+d:\draev\documents\visual studio 2015\Projects\CollisionDetection\GameLogic\bin\Debug\GameLogic.pdb
+d:\draev\documents\visual studio 2015\Projects\CollisionDetection\GameLogic\obj\Debug\GameLogic.csprojResolveAssemblyReference.cache
+d:\draev\documents\visual studio 2015\Projects\CollisionDetection\GameLogic\obj\Debug\GameLogic.dll
+d:\draev\documents\visual studio 2015\Projects\CollisionDetection\GameLogic\obj\Debug\GameLogic.pdb
