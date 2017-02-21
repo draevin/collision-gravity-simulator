@@ -14,7 +14,7 @@ Background
 Controls
 --------
 
-  The top bar includes the settings for the creation of objects. From left to right, they include a checkbox for the type of object (fixed/mobile) and sliders for size, angle, and velocity. The sliders for angle and velocity will maintain a value but have no effect on fixed objects. 
+  The top bar includes the settings for the creation of objects and map control. From left to right, they include a checkbox for the type of object (fixed/mobile) and sliders for size, angle, and velocity, and a checkbox for "torus" mode. The sliders for angle and velocity will maintain a value but have no effect on fixed objects. The torus checkbox will provide for infinite wrapping of objects, as if they were moving across the face of a torus. With this checked, after proceeding beyond any edge, they will wrap to the opposite size and maintain course.  
   
   The left sidebar is a stop/start button, which will provide control over the motion of the balls (effectively pause/play on the world)
   
