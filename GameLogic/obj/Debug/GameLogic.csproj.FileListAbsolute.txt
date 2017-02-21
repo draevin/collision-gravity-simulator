@@ -3,3 +3,8 @@ d:\draev\documents\visual studio 2015\Projects\CollisionDetection\GameLogic\bin\
 d:\draev\documents\visual studio 2015\Projects\CollisionDetection\GameLogic\obj\Debug\GameLogic.csprojResolveAssemblyReference.cache
 d:\draev\documents\visual studio 2015\Projects\CollisionDetection\GameLogic\obj\Debug\GameLogic.dll
 d:\draev\documents\visual studio 2015\Projects\CollisionDetection\GameLogic\obj\Debug\GameLogic.pdb
+D:\draev\Documents\Visual Studio 2015\Projects\collision-gravity-simulator-master\collision-gravity-simulator\GameLogic\bin\Debug\GameLogic.dll
+D:\draev\Documents\Visual Studio 2015\Projects\collision-gravity-simulator-master\collision-gravity-simulator\GameLogic\bin\Debug\GameLogic.pdb
+D:\draev\Documents\Visual Studio 2015\Projects\collision-gravity-simulator-master\collision-gravity-simulator\GameLogic\obj\Debug\GameLogic.csprojResolveAssemblyReference.cache
+D:\draev\Documents\Visual Studio 2015\Projects\collision-gravity-simulator-master\collision-gravity-simulator\GameLogic\obj\Debug\GameLogic.dll
+D:\draev\Documents\Visual Studio 2015\Projects\collision-gravity-simulator-master\collision-gravity-simulator\GameLogic\obj\Debug\GameLogic.pdb

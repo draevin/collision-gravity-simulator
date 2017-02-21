@@ -41,6 +41,35 @@ namespace GameLogic
             WallCollisions();
         }
 
+        public void TorusStep()
+        {
+            position.x += velocity.x;
+            position.y += velocity.y;
+
+            TorusWall();
+        }
+
+        public void TorusWall()
+        {
+            if (position.y - radius < 0 - (2 * radius))
+            {
+                position.y = botBound - radius;
+            } 
+            else if (position.y + radius > botBound + 2 * radius)
+            {
+                position.y = radius;
+            }
+            
+            if (position.x - radius < (0 - 2 * radius))
+            {
+                position.x = rightBound + radius;
+            }
+            else if (position.x + radius > rightBound + 2 * radius)
+            {
+                position.x = 0 - radius;
+            }
+        }
+
         public void WallCollisions()
         {
             if (position.y - radius < 0)

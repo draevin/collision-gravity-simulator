@@ -22,6 +22,7 @@ namespace CollisionDetection
 
 
         public bool creatorIsBody = false;
+        public bool torusMode = false;
         public Vec2 creatorVelocity = new Vec2(0,0);
         public int creatorRadius = 20;
 
@@ -82,9 +83,14 @@ namespace CollisionDetection
             creatorRadius = (int)radSlide.Value;
         }
 
-        private void checkToggle(object sender, RoutedEventArgs e)
+        private void bodyToggle(object sender, RoutedEventArgs e)
         {
             creatorIsBody = (bool)(sender as CheckBox).IsChecked;
+        }
+
+        private void torusToggle(object sender, RoutedEventArgs e)
+        {
+            torusMode = (bool)(sender as CheckBox).IsChecked;
         }
 
         //delete on right click
@@ -189,10 +195,17 @@ namespace CollisionDetection
 
                 foreach (BallV ball1 in balls)
                 {
-                    //GRAVITY:
+                    //UNIVERSAL GRAVITY:
                     //ball1.velocity.y += 1;
-                    ball1.Step();
 
+                    if (torusMode == true)
+                    {
+                        ball1.TorusStep();
+                    } else
+                    {
+                        ball1.Step();
+                    }
+                    
                     checkedBalls.Add(ball1);
 
                     foreach (BallV ball2 in balls.Except(checkedBalls))
@@ -230,6 +243,7 @@ namespace CollisionDetection
 
                     Canvas.SetLeft(Rendershape, ball.position.x-ball.radius);
                     Canvas.SetTop(Rendershape, ball.position.y-ball.radius);
+                    Canvas.SetZIndex(Rendershape, 0);
 
                     canvasArea.Children.Add(Rendershape);
                 }
@@ -248,6 +262,7 @@ namespace CollisionDetection
 
                     Canvas.SetLeft(Rendershape, body.position.x - body.radius);
                     Canvas.SetTop(Rendershape, body.position.y - body.radius);
+                    Canvas.SetZIndex(Rendershape, 0);
 
                     canvasArea.Children.Add(Rendershape);
                 }
