@@ -53,11 +53,11 @@ namespace GameLogic
         {
             if (position.y - radius < 0 - (2 * radius))
             {
-                position.y = botBound - radius;
+                position.y = botBound + radius;
             } 
             else if (position.y + radius > botBound + 2 * radius)
             {
-                position.y = radius;
+                position.y = 0 - radius;
             }
             
             if (position.x - radius < (0 - 2 * radius))
