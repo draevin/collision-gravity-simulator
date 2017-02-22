@@ -25,7 +25,7 @@ namespace GameLogic
 
         public float Dot(Vec2 v2)
         {
-            float result = this.x * v2.x + this.y + v2.y;
+            float result = this.x * v2.x + this.y * v2.y;
             return result;
         }
 
