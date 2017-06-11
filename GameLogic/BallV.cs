@@ -75,7 +75,7 @@ namespace GameLogic
             if (position.y - radius < 0)
             {
                 position.y = radius;
-                velocity.y = -(velocity.y);
+                velocity.y = (int)-(velocity.y*.8);
             }
             else if (position.y + radius > botBound)
             {
@@ -86,12 +86,12 @@ namespace GameLogic
             if (position.x - radius < 0)
             {
                 position.x = radius;
-                velocity.x = (int)(-(velocity.x)*.9);
+                velocity.x = (int)(-(velocity.x)*.8);
             }
             else if (position.x + radius > rightBound)
             {
                 position.x = rightBound - radius;
-                velocity.x = (int)(-(velocity.x)*.9);
+                velocity.x = (int)(-(velocity.x)*.8);
             }
         }
 
