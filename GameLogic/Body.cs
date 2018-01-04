@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameLogic
+﻿namespace GameLogic
 {
     public class Body : BallV
     {
@@ -18,7 +12,7 @@ namespace GameLogic
             radius = r;
             mass = radius;
             aoeRadius = radius * 10;
-            localGravity = (float)mass/200.0f;
+            localGravity = (float)mass/300.0f;
         }
 
 

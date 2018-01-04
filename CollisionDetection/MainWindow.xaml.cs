@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -9,6 +8,7 @@ using System.Windows.Shapes;
 using GameLogic;
 using System.Timers;
 using System.ComponentModel;
+using System.Linq;
 
 namespace CollisionDetection
 {
@@ -25,6 +25,11 @@ namespace CollisionDetection
         public bool torusMode = false;
         public Vec2 creatorVelocity = new Vec2(0,0);
         public int creatorRadius = 20;
+        public bool globalGravityOn = false;
+
+        //timer for simulation motion
+        private Timer t;
+        private TimeSpan elapsed;
 
 
         // main window with constant canvas size update for edge collisions
@@ -33,6 +38,7 @@ namespace CollisionDetection
             InitializeComponent();
             DrawObjects();
             this.SizeChanged += MainWindow_SizeChanged;
+
         }
 
         // actually updating bounds for collisions
@@ -86,11 +92,54 @@ namespace CollisionDetection
         private void bodyToggle(object sender, RoutedEventArgs e)
         {
             creatorIsBody = (bool)(sender as CheckBox).IsChecked;
+
+            //disable unneccessary controls 
+            angSlide.IsEnabled = !creatorIsBody;
+            angText.IsEnabled = !creatorIsBody;
+            velSlide.IsEnabled = !creatorIsBody;
+            velText.IsEnabled = !creatorIsBody;
+
         }
 
         private void torusToggle(object sender, RoutedEventArgs e)
         {
             torusMode = (bool)(sender as CheckBox).IsChecked;
+        }
+
+        private void gravToggle(object sender, RoutedEventArgs e)
+        {
+            globalGravityOn = (bool)(sender as CheckBox).IsChecked;
+            if (globalGravityOn)
+            {
+                //turn off torus mode
+                torusCheck.IsChecked = false;
+                torusMode = false;
+
+                //prevent creation of fixed bodies
+                bodyCheck.IsChecked = false;
+                creatorIsBody = false;
+
+                //disable tools prevent the change of those properties
+                torusCheck.IsEnabled = false;
+                bodyCheck.IsEnabled = false;
+
+                List<Body> removeBodies = new List<Body>();
+
+                foreach (Body body in bodies)
+                {
+                    removeBodies.Add(body);
+                }
+
+                bodies = bodies.Except(removeBodies).ToList();
+                canvasArea.Children.Clear();
+
+                DrawObjects();
+            } else
+            {
+                //enable tools when global gravity is disabled
+                torusCheck.IsEnabled = true;
+                bodyCheck.IsEnabled = true;
+            }
         }
 
         //delete on right click
@@ -143,11 +192,8 @@ namespace CollisionDetection
                 t.Stop();
                 t = null;
             }
+
         }
-
-
-        private Timer t;
-        private TimeSpan elapsed;
 
         //start button
         private void Start_Click(object sender, RoutedEventArgs e)
@@ -156,17 +202,20 @@ namespace CollisionDetection
             {
                 t.Stop();
                 t = null;
+                canvasArea.Focus();
+                startBorder.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#b24242"));
             }
             else
             {
-                t = new Timer(50);
+                t = new Timer(25);
                 elapsed = new TimeSpan(0);
                 t.Elapsed += (sender2, e2) =>
                 {                    
-                    Application.Current.Dispatcher.Invoke(new Action(() => fullStep()));
+                    Application.Current.Dispatcher.Invoke(new Action(() => FullStep()));
                 };
                 t.AutoReset = false;
                 t.Start();
+                startBorder.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#42b25f"));
             }
         }
 
@@ -182,11 +231,13 @@ namespace CollisionDetection
 
             balls = balls.Except(removeBalls).ToList();
             canvasArea.Children.Clear();
+
+            DrawObjects();
         }
 
 
         //step all balls and continue frames
-        private void fullStep()
+        private void FullStep()
         {
             canvasArea.Children.Clear();
             if (balls != null)
@@ -195,14 +246,16 @@ namespace CollisionDetection
 
                 foreach (BallV ball1 in balls)
                 {
-                    //UNIVERSAL GRAVITY:
-                    //ball1.velocity.y += 1;
-
+                    
                     if (torusMode == true)
                     {
                         ball1.TorusStep();
                     } else
                     {
+                        if (globalGravityOn)
+                        {
+                            ball1.ApplyGlobalGravity();
+                        }
                         ball1.Step();
                     }
                     

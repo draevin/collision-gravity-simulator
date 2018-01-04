@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameLogic
 {
@@ -87,6 +83,19 @@ namespace GameLogic
 
             Vec2 v2 = (Vec2)obj;
             return (this.x == v2.x && this.y == v2.y);
+        }
+
+        public override int GetHashCode()
+        {
+            int result = 17;
+
+            int xCode = BitConverter.ToInt32(BitConverter.GetBytes(this.x),0);
+            result = 17 * result + xCode;
+
+            int yCode = BitConverter.ToInt32(BitConverter.GetBytes(this.y), 0);
+            result = 17 * result + yCode;
+
+            return result;
         }
     }
 }

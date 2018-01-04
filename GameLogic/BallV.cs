@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using GameLogic;
-
-namespace GameLogic
+﻿namespace GameLogic
 {
     public class BallV
     {
@@ -14,6 +6,7 @@ namespace GameLogic
         public Vec2 position;
         public Vec2 velocity;
         public int mass;
+        private float wallRebound = 0.75f;
 
         public static int rightBound, botBound;
         
@@ -49,6 +42,11 @@ namespace GameLogic
             TorusWall();
         }
 
+        public void ApplyGlobalGravity()
+        {
+            velocity.y += 0.6f;
+        }
+
         public void TorusWall()
         {
             if (position.y - radius < 0 - (2 * radius))
@@ -75,23 +73,23 @@ namespace GameLogic
             if (position.y - radius < 0)
             {
                 position.y = radius;
-                velocity.y = (int)-(velocity.y*.8);
+                velocity.y = (float)(-(velocity.y)*wallRebound);
             }
             else if (position.y + radius > botBound)
             {
                 position.y = botBound - radius;
-                velocity.y = (int)(-(velocity.y)*.8);
+                velocity.y = (float)(-(velocity.y)* wallRebound);
             }
 
             if (position.x - radius < 0)
             {
                 position.x = radius;
-                velocity.x = (int)(-(velocity.x)*.8);
+                velocity.x = (float)(-(velocity.x)* wallRebound);
             }
             else if (position.x + radius > rightBound)
             {
                 position.x = rightBound - radius;
-                velocity.x = (int)(-(velocity.x)*.8);
+                velocity.x = (float)(-(velocity.x)* wallRebound);
             }
         }
 
@@ -192,7 +190,22 @@ namespace GameLogic
                 return false;
 
             BallV b = (BallV)obj;
-            return (position == b.position && velocity == b.velocity);
+            return this.position.Equals(b.position) && this.velocity.Equals(b.velocity);
+        }
+
+        public override int GetHashCode()
+        {
+            int result = 17;
+
+            int posCode = System.BitConverter.ToInt32(System.BitConverter.GetBytes(this.position.x + this.position.y),0);
+
+            result = 17 * result + posCode;
+
+            int velCode = System.BitConverter.ToInt32(System.BitConverter.GetBytes(this.velocity.x + this.velocity.y), 0);
+
+            result = 17 * result + velCode;
+
+            return result;
         }
     }
 }
